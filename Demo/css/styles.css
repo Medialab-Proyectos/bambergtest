@@ -398,28 +398,6 @@ a.family-card:hover { border-color: var(--purple); }
 .cta-band p { color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
 .cta-band .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-/* ---------- Notas de la demo (no son parte del diseño) ---------- */
-.rel { position: relative; }
-.demo-note {
-  position: absolute; z-index: 20; max-width: 300px;
-  background: #FFF6C9; color: #3D3300; border: 1px solid #E8D77A; border-radius: 10px;
-  padding: 10px 12px 10px 14px; font-size: .8rem; line-height: 1.45; box-shadow: 0 8px 24px -8px rgba(0,0,0,.35);
-  text-align: left; letter-spacing: 0; text-transform: none; font-weight: 400; font-family: system-ui, sans-serif;
-}
-.demo-note b { display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 3px; color: #7A5C00; }
-.demo-note.q { background: #FFE3DB; border-color: #FFB29E; color: #5A1A08; }
-.demo-note.q b { color: #B03A18; }
-.demo-note.inline { position: static; max-width: none; margin: 0 0 24px; }
-body.notes-off .demo-note { display: none; }
-.demo-toggle {
-  position: fixed; z-index: 90; left: 18px; bottom: 18px;
-  background: var(--ink); color: var(--white); border: 0; border-radius: 999px; padding: 11px 18px;
-  font: 700 .8rem system-ui, sans-serif; cursor: pointer; box-shadow: 0 8px 24px -6px rgba(0,0,0,.45);
-  display: flex; align-items: center; gap: 8px;
-}
-.demo-toggle i { width: 10px; height: 10px; border-radius: 50%; background: #FFD84D; }
-body.notes-off .demo-toggle i { background: #5B6270; }
-
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .nav-links { gap: 22px; }
@@ -444,7 +422,6 @@ body.notes-off .demo-toggle i { background: #5B6270; }
   .speaker-grid { grid-template-columns: 1fr 1fr; }
   .legal-toc { position: static; }
   .auth-side { min-height: 0; padding-block: 48px; }
-  .demo-note { position: static; margin: 10px 0; max-width: none; }
 }
 @media (max-width: 680px) {
   .logos-row { justify-content: center; }

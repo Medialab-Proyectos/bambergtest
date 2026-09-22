@@ -8,11 +8,6 @@ Sirve para enseñarle la propuesta al cliente y cerrar las decisiones pendientes
 
 Abre `Demo/index.html` en el navegador. No necesita servidor ni instalación.
 
-El botón de abajo a la izquierda, **"Ocultar notas de la demo"**, muestra u oculta las anotaciones:
-
-- **Amarillo:** cambio aplicado respecto al sitio actual.
-- **Rojo:** falta información o hay que confirmar algo con el cliente.
-
 ## Páginas
 
 | Archivo | Página |
@@ -31,7 +26,7 @@ El botón de abajo a la izquierda, **"Ocultar notas de la demo"**, muestra u ocu
 Demo/
   css/styles.css     Estilos, con las reglas del manual de marca comentadas
   js/data.js         Eventos y fotos. Simula lo que vendría del admin de Bubble
-  js/layout.js       Header, footer, formulario de consulta y notas de la demo
+  js/layout.js       Header, footer y formulario de consulta
   assets/            Logos oficiales, fotos, video y logos de partners
 Contexto/            Transcripción de la reunión del 18/09/2026
 Requerimientos/      Documento del cliente y enlaces de referencia
@@ -42,7 +37,7 @@ Recursos/            Material original del cliente (logos de partners)
 
 Es real: los logos oficiales de Bamberg Security, el video del hero, las fotos del álbum de Flickr, los logos de los partners, el foro de Madrid del 21 de mayo de 2026 y todos los textos que mandó el cliente.
 
-Es de ejemplo y está marcado como tal: los próximos summits y sus speakers, los testimonios, las cifras de About Us y el texto de About Us.
+Es de ejemplo: los próximos summits y sus speakers, los testimonios, las cifras de About Us y el texto de About Us.
 
 ## Pendiente de confirmar con el cliente
 

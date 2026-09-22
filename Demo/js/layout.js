@@ -1,4 +1,4 @@
-// Header, footer, modal de consulta y notas de la demo, compartidos por todas las páginas.
+// Header, footer y modal de consulta, compartidos por todas las páginas.
 (function () {
   const page = document.body.dataset.page || '';
   const bare = document.body.hasAttribute('data-bare'); // páginas de login / sign up
@@ -84,8 +84,7 @@
         <p>Our team will get in touch with you shortly.</p>
       </div>
     </div>
-  </div>
-  <button class="demo-toggle" type="button"><i></i> Ocultar notas de la demo</button>`;
+  </div>`;
 
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer + modal);
@@ -96,18 +95,6 @@
     const open = document.querySelector('.nav-links').classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', open);
   });
-
-  // Notas de la demo (se recuerda entre páginas)
-  const toggle = document.querySelector('.demo-toggle');
-  const setNotes = on => {
-    document.body.classList.toggle('notes-off', !on);
-    toggle.lastChild.textContent = on ? ' Ocultar notas de la demo' : ' Mostrar notas de la demo';
-    try { localStorage.setItem('bs-demo-notes', on ? '1' : '0'); } catch (e) {}
-  };
-  let notesOn = true;
-  try { notesOn = localStorage.getItem('bs-demo-notes') !== '0'; } catch (e) {}
-  setNotes(notesOn);
-  toggle.addEventListener('click', () => { notesOn = !notesOn; setNotes(notesOn); });
 
   // Modal "Explore opportunities"
   const dlg = document.getElementById('inquiry');
@@ -120,7 +107,7 @@
   dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
-  // Formularios de la demo: no envían nada, solo muestran el mensaje de confirmación
+  // Los formularios no envían nada: solo muestran el mensaje de confirmación
   document.querySelectorAll('form.form').forEach(f => f.addEventListener('submit', e => {
     e.preventDefault();
     f.hidden = true;
