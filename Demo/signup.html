@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign up · Bamberg Security</title>
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="signup" data-bare>
+
+<main class="auth">
+  <aside class="auth-side on-dark" style="background-image:url('assets/photos/p12.jpg')">
+    <a href="index.html"><img class="logo" src="assets/logo/bamberg-security-horizontal-negativo.svg" alt="Bamberg Security"></a>
+    <div>
+      <span class="label">Bamberg Security</span>
+      <h2 class="heading">Join the community</h2>
+      <p>Create your account to request invitations to our private summits and stay informed about upcoming events.</p>
+      <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8B8FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span>Request invitations to private summits</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8B8FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span>Early access to new events</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8B8FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span>Content from our speakers and partners</span></li></ul>
+    </div>
+  </aside>
+  <div class="auth-main">
+    <div class="auth-box">
+      <span class="label">Sign up</span>
+      <h1 class="heading">Create your account</h1>
+      <p>Already have an account? <a class="auth-link" href="login.html">Log in</a></p>
+      <form class="form">
+        <label>First name<input required autocomplete="given-name"></label>
+        <label>Last name<input required autocomplete="family-name"></label>
+        <label class="full">Work email<input type="email" required autocomplete="email"></label>
+        <label>Organization<input required autocomplete="organization"></label>
+        <label>Job title<input required autocomplete="organization-title"></label>
+        <label>Country
+          <select required><option value="">Select…</option><option>Argentina</option><option>Mexico</option><option>Portugal</option><option>Spain</option><option>Other</option></select>
+        </label>
+        <label>Sector
+          <select><option>Private sector</option><option>Government / public sector</option><option>Critical infrastructure</option><option>Academia</option><option>Other</option></select>
+        </label>
+        <label class="full">Password<input type="password" required minlength="8" autocomplete="new-password"></label>
+        <label class="full check"><input type="checkbox" required> I accept the <a href="terms.html">terms and conditions</a> and privacy policy.</label>
+        <label class="full check"><input type="checkbox"> I want to receive news about upcoming Bamberg Security events.</label>
+        <button class="btn btn-purple" type="submit">Create account</button>
+        <div class="divider">or</div>
+        <button class="btn btn-social" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="#48168F"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.8v1.3c.4-.8 1.4-1.5 2.9-1.5 3 0 3.6 2 3.6 4.6z"/></svg> Sign up with LinkedIn</button>
+      </form>
+      <div class="form-ok" hidden>
+        <h3 class="heading">Account created</h3>
+        <p>(Demo) We have sent you a confirmation email.</p>
+        <a class="btn btn-purple" href="summits.html">Explore summits</a>
+      </div>
+      <div class="demo-note inline" style="margin-top:26px"><b>Sign up</b>Campos propuestos. “Sector” sirve para distinguir gobierno y sector privado. Hay que compararlos con el registro actual de Health en Bubble y confirmarlos con el cliente.</div>
+    </div>
+  </div>
+</main>
+
+<script src="js/layout.js"></script>
+</body>
+</html>

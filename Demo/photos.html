@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photos · Bamberg Security</title>
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="photos">
+
+<main>
+
+<section class="page-hero flat on-dark">
+  <div class="wrap">
+    <span class="label">Gallery</span>
+    <h1 class="display">Photos</h1>
+    <p>Moments from the Bamberg Cybersecurity &amp; Digital Trust Summit Series.</p>
+  </div>
+</section>
+
+<section class="albums">
+  <div class="wrap">
+    <div class="demo-note inline"><b>Página Photos</b>Fotos reales del álbum de Flickr “Spain Cybersecurity and Data Trust Forum 2026”. Cada evento pasado tendría su propio álbum.</div>
+    <div class="album-head">
+      <div>
+        <span class="label">Madrid, Spain · <span class="data">May 21, 2026</span></span>
+        <h2 class="heading">Spain Cybersecurity and Data Trust Forum 2026</h2>
+        <p><span class="data">20</span> photos</p>
+      </div>
+      <a class="btn btn-outline" href="https://www.flickr.com/photos/194423616@N07/albums/72177720333865969" target="_blank" rel="noopener">View full album on Flickr</a>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+</main>
+
+<div class="lightbox" id="lightbox" hidden>
+  <img alt="">
+  <button class="lb-close" type="button" aria-label="Close">×</button>
+  <button class="lb-prev" type="button" aria-label="Previous">‹</button>
+  <button class="lb-next" type="button" aria-label="Next">›</button>
+  <div class="lb-count data"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = BS.photos.map((p, i) =>
+    `<button type="button" data-i="${i}" aria-label="Open photo ${i + 1}"><img src="${p.thumb}" alt="Spain Cybersecurity and Data Trust Forum 2026, photo ${i + 1}" loading="lazy"></button>`).join('');
+
+  const lb = document.getElementById('lightbox');
+  const img = lb.querySelector('img');
+  const counter = lb.querySelector('.lb-count');
+  let cur = 0;
+  const show = i => {
+    cur = (i + BS.photos.length) % BS.photos.length;
+    img.src = BS.photos[cur].full;
+    counter.textContent = `${cur + 1} / ${BS.photos.length}`;
+    lb.hidden = false;
+  };
+  gallery.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(+b.dataset.i); });
+  lb.querySelector('.lb-close').onclick = () => { lb.hidden = true; };
+  lb.querySelector('.lb-prev').onclick = () => show(cur - 1);
+  lb.querySelector('.lb-next').onclick = () => show(cur + 1);
+  lb.addEventListener('click', e => { if (e.target === lb) lb.hidden = true; });
+  document.addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') lb.hidden = true;
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+</script>
+</body>
+</html>

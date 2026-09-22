@@ -1,0 +1,569 @@
+Archivo de audio 
+
+bambe09212026.m4a 
+
+ 
+
+Transcripción 
+
+00:00:08 Orador 1 
+
+A ver, te voy a mostrar pantalla Bamberg Summits ¿Pudiste ver el manual de marca? 
+
+00:00:29 Orador 1 
+
+Ok, no te preocupes A ver, un momentito Haz de cuenta 
+
+00:00:47 Orador 1 
+
+aquí está Bamber Shelf te voy a presentar mi pantalla dime si puedes verlo ok, haz de cuenta que Bamber es una empresa que es de me parece que es de España pero nuestro punto es 
+
+00:01:17 Orador 1 
+
+Es de Argentina, con la persona que nos reunimos siempre, que es Inés. 
+
+00:01:24 Orador 1 
+
+Y lo que hacen son conferencias, tal cual. 
+
+00:01:28 Orador 1 
+
+El chiste de Bamberg es que ellos crean un evento, ponen cuáles son los observadores, los temas y tú pagas para poder registrarte, para registrar tu boleto o asistencia al evento. 
+
+00:01:46 Orador 1 
+
+De eso se trata tal cual Bamberg. 
+
+00:01:50 Orador 1 
+
+Entonces, el reto es que haz de cuenta que esto se llama Bamberg Health y tienen quieren hacer una plataforma nueva que se llame Bamberg Dialogs. 
+
+00:02:07 Orador 1 
+
+A ver si lo explica aquí, digo, tienen otra que es más chica. 
+
+00:02:14 Orador 1 
+
+O sea, haz de cuenta que Bamberg Health es como súper grande y tienen otra llamada Bamberg Dialogs, que es como eventos más chicos, pero lo que quieren hacer es esto Bamberg Security. 
+
+00:02:30 Orador 1 
+
+Aquí está, que es una de las tres plataformas de Bamberg, que está con Bamberg Health y Dialogs. 
+
+00:02:41 Orador 1 
+
+El reto, bueno, aquí 
+
+00:02:43 Orador 1 
+
+Lo que mencionan ellos es que va a ser para otro tipo de eventos más privados, no tan como públicos, y el reto es que no tenemos como un una guía de qué es lo que quieren exactamente. 
+
+00:03:01 Orador 1 
+
+O sea, literal la instrucción fue dupliquen Bumber Health, o sea, esta aplicación la duplicamos de Bubble y tal cual sobre eso vamos a trabajar. 
+
+00:03:25 Orador 1 
+
+esto y esto volverlo Bumber Security tal cual entonces si no, no, no haz de cuenta que, a ver si esta aquí en archivo es que te quiero enseñar lo primero que nos dieron 
+
+00:03:56 Orador 1 
+
+Esto con este documento. 
+
+00:03:59 Orador 1 
+
+Ah no, esto creo que es lo mismo que vimos. 
+
+00:04:03 Orador 1 
+
+Espera. 
+
+00:04:07 Orador 1 
+
+Debo abrir Notion. 
+
+00:04:12 Orador 1 
+
+Ve diciéndome tus dudas. 
+
+00:04:32 Orador 1 
+
+Pues no duplicamos tal cual esta aplicación ya la tenemos. 
+
+00:04:35 Orador 1 
+
+Haz de cuenta que ya tenemos la copia de este Bumber Health. 
+
+00:04:43 Orador 1 
+
+Ajá, correcto con su brand. 
+
+00:05:09 Orador 1 
+
+Si, de los eventos para poder. 
+
+00:05:34 Orador 1 
+
+Estas, no sé, porque mira, te voy a enseñar lo que nos dieron como base literalmente fue esto. 
+
+00:05:45 Orador 1 
+
+Bamber Security. 
+
+00:05:50 Orador 1 
+
+O sea, literalmente nos dieron el texto que quieren en la página, pero no nos dijeron en dónde. 
+
+00:05:56 Orador 1 
+
+O sea, es como la página principal y es literal, nos dieron texto. 
+
+00:06:01 Orador 1 
+
+No nos dijeron pongan esto aquí, aquí, aquí, sino que nos dieron el contenido de la página sin un orden. 
+
+00:06:13 Orador 1 
+
+O sea, tal cual son copys. 
+
+00:06:23 Orador 1 
+
+Aja, si. 
+
+00:06:31 Orador 1 
+
+Si. 
+
+00:06:33 Orador 1 
+
+Aja miren aqui hasta dudas y todo. 
+
+00:06:41 Orador 1 
+
+A ver, permítame un momentito. 
+
+00:06:55 Orador 1 
+
+Le puse a David, puedes unirte a un haru de 5 minutos. 
+
+00:07:00 Orador 1 
+
+Es sobre pozole. 
+
+00:07:05 Orador 1 
+
+Lo voy a *****. 
+
+00:07:16 Orador 1 
+
+cayó en la trampa. 
+
+00:07:21 Orador 1 
+
+Sí. 
+
+00:07:24 Orador 1 
+
+Sí, mira, y eso es lo que nos habían dado de paleta de colores. 
+
+00:07:38 Orador 1 
+
+¿Qué onda? 
+
+00:07:43 Orador 1 
+
+Nada. 
+
+00:07:47 Orador 2 
+
+Veniste al lugar en contacto. 
+
+00:07:52 Orador 2 
+
+Excelente. 
+
+00:08:10 Orador 2 
+
+Yo tampoco entiendo. 
+
+00:08:14 Orador 2 
+
+Lo que tenemos es literal todo lo que el cliente nos da. 
+
+00:08:18 Orador 2 
+
+De verdad tenemos mucho problema de comunicación con el cliente porque nos dice quiero que hagan esto y ya. 
+
+00:08:24 Orador 2 
+
+Y no sabemos a qué se refiere, detalles, 
+
+00:08:28 Orador 2 
+
+O sea, de verdad nos toca descarbar muchísimo. 
+
+00:08:34 Orador 2 
+
+Nosotros tenemos un ejemplo de la plataforma que tienen ahorita, que justo es esa. 
+
+00:08:41 Orador 2 
+
+No nos están diciendo mucho, sinceramente. 
+
+00:08:44 Orador 2 
+
+Entonces, literal, es lo que entiendes. 
+
+00:08:50 Orador 1 
+
+Por ejemplo, aquí lo de About Us es lo que va a ir sobre nosotros. 
+
+00:08:59 Orador 1 
+
+Ah bueno, pues no está tan difícil de entender ahora. 
+
+00:09:02 Orador 2 
+
+Pero entiendo que le van a cambiar el texto, pero el diseño qué? 
+
+00:09:08 Orador 2 
+
+Sabes? 
+
+00:09:09 Orador 1 
+
+No dice nada de esta imagen de aquí. 
+
+00:09:16 Orador 2 
+
+Sí, ni yo. 
+
+00:09:19 Orador 1 
+
+Sí. 
+
+00:09:35 Orador 2 
+
+Sí, nosotros también, Chris, nosotros. 
+
+00:09:37 Orador 1 
+
+Imagínate y sólo nos dieron eso al inicio. 
+
+00:09:41 Orador 1 
+
+Ah bueno, nos dieron luego. 
+
+00:09:43 Orador 1 
+
+No tengo acceso. 
+
+00:10:07 Orador 2 
+
+Pues es que igual regrésate a Word. 
+
+00:10:12 Orador 2 
+
+José Luis, creo que eres tú. 
+
+00:10:16 Orador 2 
+
+¿A dónde? 
+
+00:10:19 Orador 2 
+
+En visual. 
+
+00:10:20 Orador 2 
+
+Nos dicen tipografía, los colores, elementos, pero ¿qué fregados significan? 
+
+00:10:27 Orador 2 
+
+No lo sé, porque no sé en dónde deban ir esos colores, sabes entonces. 
+
+00:11:15 Orador 2 
+
+Igual José Luis, no sé si valió la pena como pedirle a, es que neta siento que si le pedimos algo nos va a salir con otra cosa, pero pedirle a Inés de que oye, necesito que paso a paso me digas qué es lo que quieres que cambiemos del diseño. 
+
+00:11:33 Orador 2 
+
+Está bien que no nos den un Figma, pero al menos una guía paso a paso, o sea, detallado de esto es lo que quiero que muevan. 
+
+00:11:40 Orador 2 
+
+a esto esto quiero que se vea así o lo que sea si ya llegamos con el diseño de Cris como para decirle oye esto es lo que pensamos dinos si sí o si no y si no pues ya nos das tú los detalles completos pues así lo hacemos pero. 
+
+00:12:02 Orador 1 
+
+Es que le dije eso y como que se cabreó un poco. 
+
+00:12:06 Orador 2 
+
+¿Por qué? 
+
+00:12:07 Orador 1 
+
+Que no tenían los recursos para hacer diseño ni pasar nada así. 
+
+00:12:16 Orador 2 
+
+Ajá, pues qué te parece si usamos la sesión del lunes para eso? 
+
+00:12:39 Orador 1 
+
+Ok, o sea, estás invitado, Cris? 
+
+00:12:44 Orador 2 
+
+O sea, decirle al cliente que oye, queremos, o sea, la prioridad siguiente va a ser hacer la parte de sacar el. 
+
+00:12:56 Orador 2 
+
+El diseño nuevo y tratar de hacerlo en el menos menor tiempo posible, pero para poder hacerlo tenemos esta propuesta. 
+
+00:13:03 Orador 2 
+
+Regálanos estos 30 minutos para que nos digas qué es lo que quieres que cambiemos y se lo lleva Cris? 
+
+00:13:14 Orador 1 
+
+Pues me envió este, mira, aquí hay más información, es que me dijo, te dijo el martes. 
+
+00:13:23 Orador 1 
+
+Solicito que revisen nuevamente este archivo, está expreso literalmente lo que necesitamos. 
+
+00:13:29 Orador 1 
+
+Propongo que prioricen el contenido y dejen el resto de los detalles para la siguiente entrega. 
+
+00:13:34 Orador 1 
+
+Necesito una fecha de beta para mi superior y en caso de que el proyecto no pueda ser interpretado y llevado a cabo, también necesito saberlo. 
+
+00:13:42 Orador 1 
+
+Bestia. 
+
+00:13:43 Orador 1 
+
+Ah, mira, aquí está, actualizar el video por. 
+
+00:13:47 Orador 1 
+
+Ándale. 
+
+00:13:49 Orador 2 
+
+A ver, ábrela, pero ¿qué es el video? 
+
+00:13:52 Orador 1 
+
+Me da miedo. 
+
+00:14:00 Orador 2 
+
+Porque si eso da un comercial. 
+
+00:14:06 Orador 2 
+
+Es un comercial. 
+
+00:14:09 Orador 2 
+
+No es que. 
+
+00:14:12 Orador 2 
+
+¡Ay, qué horror! No nos están diciendo qué es lo que quieren cambiar, es eso y ya, ¿sabes. 
+
+00:14:20 Orador 1 
+
+Pero está bien, actualizar el video que estaba antes por este. 
+
+00:14:26 Orador 1 
+
+Mostrar únicamente el botón de Summit en vez de Exclusives. 
+
+00:14:32 Orador 1 
+
+Cambiar fondo, ¿por qué? 
+
+00:14:35 Orador 1 
+
+¿qué fondo? 
+
+00:14:39 Orador 2 
+
+Lo mismo me pregunto. 
+
+00:14:43 Orador 1 
+
+Ocultar Exclusive News, Actualizar logo. 
+
+00:14:47 Orador 1 
+
+Bueno, eso sí es parte de la identidad. 
+
+00:14:49 Orador 1 
+
+También aquí están las fotos. 
+
+00:14:52 Orador 1 
+
+Building trust in a connected world. 
+
+00:14:57 Orador 1 
+
+¿Qué? 
+
+00:15:02 Orador 1 
+
+Ah bueno. 
+
+00:15:05 Orador 1 
+
+Esas pauras. 
+
+00:15:27 Orador 1 
+
+Aquí está. 
+
+00:15:34 Orador 1 
+
+Está raro que esté en negro todo. 
+
+00:15:42 Orador 1 
+
+Sí. 
+
+00:15:45 Orador 1 
+
+A la bestia. 
+
+00:15:45 Orador 1 
+
+Cuando puedas. 
+
+00:15:47 Orador 1 
+
+Cuando puedas. 
+
+00:15:53 Orador 1 
+
+Ajolote anónimo. 
+
+00:15:57 Orador 1 
+
+Clicker. 
+
+00:16:16 Orador 1 
+
+Ok. 
+
+00:16:27 Orador 1 
+
+Sí. 
+
+00:16:35 Orador 1 
+
+La idea según es que hagas dos pantallas. 
+
+00:16:42 Orador 1 
+
+Bueno, no sé que sea dos pantallas para el equipo. 
+
+00:16:47 Orador 2 
+
+O sea, con que sí nos puedas ayudar a actualizar, por ejemplo, la landing y el about Easy. 
+
+00:17:02 Orador 2 
+
+Dale, dale. 
+
+00:17:04 Orador 2 
+
+Con eso. 
+
+00:17:05 Orador 2 
+
+Con eso sacamos los diseños, los botones y que con eso no falla. 
+
+00:17:10 Orador 1 
+
+Sí, voy a mandarlo al canal. 
+
+00:17:23 Orador 1 
+
+Voy a mandar este. 
+
+00:17:36 Orador 2 
+
+Bueno, si ya estamos, les dejo. 
+
+00:17:39 Orador 2 
+
+Ok, espero. 
+
+00:17:43 Orador 2 
+
+Sí, no hay posole. 
+
+00:17:44 Orador 2 
+
+Lo lamento. 
+
+00:17:46 Orador 2 
+
+Lo lamento mucho. 
+
+00:17:47 Orador 2 
+
+Este año no hubo posole. 
+
+00:17:51 Orador 1 
+
+Yo también tengo que irme, voy a llegarme un paquete. 
+
+00:18:03 Orador 2 
+
+No, tiene suerte de que es HC Emilio. 
+
+00:18:08 Orador 1 
+
+¿Por qué? 
+
+00:18:11 Orador 2 
+
+Solo tiene suerte, José Luis. 
+
+00:18:23 Orador 2 
+
+Sale equipo, nos vemos, que tengan muy buen fin de semana. 
+
+00:18:26 Orador 1 
+
+Chao. 
+
+00:18:33 Orador 1 
+
+Sí, lo mando al canal. 
+
+00:18:47 Orador 1 
+
+Ok. 
+
+00:18:56 Orador 1 
+
+Ok. 
+
+00:19:01 Orador 1 
+
+Va, estamos en contacto. 
+
+00:19:07 Orador 1 
+
+Gracias. 
+
+ 

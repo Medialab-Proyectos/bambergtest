@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event · Bamberg Security</title>
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="summits">
+
+<main id="event"></main>
+
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get('id');
+  const e = BS.byId(id) || BS.upcoming()[0];
+  const isPast = new Date(e.date) < BS.today;
+  document.title = `${e.title} · Bamberg Security`;
+
+  const cal = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+  const clock = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  const lock = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  const pinL = BS.icons.pin.replace(/14/g, '18');
+
+  const agenda = [
+    ['08:00', 'Registration & welcome coffee', 'Networking with fellow attendees.'],
+    ['09:00', 'Opening keynote', 'The state of cybersecurity and digital trust in the region.'],
+    ['09:45', 'Panel: ' + e.topics[0], 'Senior leaders from government and the private sector.'],
+    ['11:00', 'Networking break', ''],
+    ['11:30', 'Panel: ' + e.topics[1], 'Case studies and lessons learned.'],
+    ['12:45', 'Closed-door roundtable: ' + e.topics[2], 'Invitation-only discussion under Chatham House rule.'],
+    ['14:00', 'Networking lunch', ''],
+    ['15:15', 'Closing remarks', '']
+  ];
+
+  document.getElementById('event').innerHTML = `
+  <section class="event-hero on-dark rel" style="background-image:url('${e.image}')">
+    <div class="wrap">
+      <span class="label">${isPast ? 'Past event' : 'Cybersecurity & Digital Trust Summit Series'}</span>
+      <h1 class="display">${e.title}</h1>
+      <div class="event-facts">
+        <div>${cal}<span class="data">${BS.fmtDate(e.date)}</span></div>
+        <div>${clock}<span class="data">${e.time}</span>&nbsp;(local time)</div>
+        <div>${pinL}${e.city}, ${e.country}</div>
+        <div>${lock}${e.access} · ${e.format}</div>
+      </div>
+      <div class="row">
+        ${isPast
+          ? `<a class="btn btn-coral" href="photos.html">View photos</a>`
+          : `<a class="btn btn-coral" href="#register">Request an invitation</a>`}
+        <a class="btn btn-ghost" href="#speakers">Speakers</a>
+      </div>
+    </div>
+    ${e.sample ? `<div class="demo-note q" style="bottom:24px; right:24px;"><b>Evento de ejemplo</b>La ficha se arma con los campos del admin: título, fecha, ciudad, formato, imagen, temas, speakers y agenda.</div>` : ''}
+  </section>
+
+  <nav class="subnav" aria-label="Event sections">
+    <div class="wrap">
+      <a href="#overview">Overview</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#venue">Venue</a>
+      <a href="#register">${isPast ? 'Next events' : 'Request an invitation'}</a>
+    </div>
+  </nav>
+
+  <section class="ev-section" id="overview">
+    <div class="wrap overview">
+      <div>
+        <span class="label">Overview</span>
+        <h2 class="heading">About the summit</h2>
+        <p>${e.short}</p>
+        <p>The ${e.title} is part of the Bamberg Cybersecurity &amp; Digital Trust Summit Series, bringing together senior cybersecurity, technology, risk, data and government leaders for focused discussions on the most important challenges shaping cybersecurity and digital trust.</p>
+        <h3 class="heading" style="font-size:1.15rem; margin:32px 0 14px">Key topics</h3>
+        <div class="chips">${e.topics.map(t => `<span class="chip">${t}</span>`).join('')}</div>
+      </div>
+      <aside class="facts-card">
+        <dl>
+          <div><dt>Date</dt><dd class="data">${BS.fmtDate(e.date)}</dd></div>
+          <div><dt>Time</dt><dd><span class="data">${e.time}</span> (local time)</dd></div>
+          <div><dt>Location</dt><dd>${e.city}, ${e.country}</dd></div>
+          <div><dt>Format</dt><dd>${e.format}</dd></div>
+          <div><dt>Access</dt><dd>${e.access} — by invitation</dd></div>
+          <div><dt>Speakers</dt><dd class="data">${e.speakers}</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ev-section alt" id="speakers">
+    <div class="wrap">
+      <span class="label">Speakers</span>
+      <h2 class="heading">${e.speakers} senior leaders</h2>
+      <div class="speaker-grid">
+        ${Array.from({ length: 8 }, () => `
+          <div class="speaker-card"><span class="avatar">SN</span><strong>Speaker name</strong><small>Role</small><small>Organization</small></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="ev-section" id="agenda">
+    <div class="wrap">
+      <span class="label">Agenda</span>
+      <h2 class="heading">Programme</h2>
+      <div class="agenda">
+        ${agenda.map(([t, h, p]) => `<div class="agenda-row"><time class="data">${t}</time><div><h4>${h}</h4>${p ? `<p>${p}</p>` : ''}</div></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="ev-section alt" id="venue">
+    <div class="wrap overview">
+      <div>
+        <span class="label">Venue</span>
+        <h2 class="heading">${e.city}, ${e.country}</h2>
+        <p>${e.venue}. The exact location is shared with confirmed attendees.</p>
+      </div>
+    </div>
+  </section>
+
+  ${isPast ? `
+  <section class="cta-band" id="register">
+    <h2 class="heading">This event has already taken place</h2>
+    <p>Check out the upcoming summits of the Bamberg Cybersecurity &amp; Digital Trust Summit Series.</p>
+    <div class="row"><a class="btn btn-purple" href="summits.html">Upcoming events</a><a class="btn btn-outline" href="photos.html">View photos</a></div>
+  </section>` : `
+  <section class="register on-dark" id="register">
+    <div class="wrap register-grid">
+      <div>
+        <span class="label">Private event</span>
+        <h2 class="heading">Request an invitation</h2>
+        <p>Attendance is by invitation only. Our team reviews every request to keep the conversation among senior decision-makers.</p>
+        <ul>
+          <li>CISOs, CIOs and senior security leaders</li>
+          <li>Government, regulators and public institutions</li>
+          <li>Critical infrastructure operators</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 class="heading">Your details</h3>
+        <form class="form">
+          <label>First name<input required autocomplete="given-name"></label>
+          <label>Last name<input required autocomplete="family-name"></label>
+          <label class="full">Work email<input type="email" required autocomplete="email"></label>
+          <label>Organization<input required autocomplete="organization"></label>
+          <label>Job title<input required autocomplete="organization-title"></label>
+          <label class="full">I want to
+            <select><option>Attend</option><option>Speak</option><option>Partner / sponsor</option></select>
+          </label>
+          <label class="full check"><input type="checkbox" required> I accept the <a href="terms.html">terms</a> and privacy policy.</label>
+          <button class="btn btn-purple" type="submit">Send request</button>
+        </form>
+        <div class="form-ok" hidden>
+          <h3 class="heading">Request received</h3>
+          <p>We will review your request and get back to you by email.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap"><div class="demo-note inline" style="margin-top:28px"><b>Por confirmar</b>Como son eventos privados, proponemos “Request an invitation” en lugar de la compra directa de Health. Si deben pagar, aquí va el flujo de pago que ya existe en Bubble.</div></div>
+  </section>`}`;
+
+  // Los formularios se crean después de layout.js: conectarlos aquí
+  document.querySelectorAll('#event form.form').forEach(f => f.addEventListener('submit', ev => {
+    ev.preventDefault(); f.hidden = true; f.parentElement.querySelector('.form-ok').hidden = false;
+  }));
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Summits · Bamberg Security</title>
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="summits">
+
+<main>
+
+<section class="page-hero flat on-dark rel">
+  <div class="wrap">
+    <span class="label">Cybersecurity &amp; Digital Trust Summit Series</span>
+    <h1 class="display">Summits</h1>
+    <p>Our summits bring together senior cybersecurity, technology, risk, data and government leaders within strategic markets around the world.</p>
+  </div>
+</section>
+
+<section class="listing">
+  <div class="wrap">
+    <div class="demo-note inline"><b>Página Summits</b>Misma lógica que en Health: pestañas de próximos y pasados, y buscador. El buscador de arriba también trae aquí sus resultados. Los eventos se cargan desde el admin; los de esta demo son de ejemplo, salvo el foro de Madrid (mayo 2026).</div>
+
+    <div class="toolbar">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="upcoming" aria-selected="true">Upcoming events</button>
+        <button class="tab" role="tab" data-tab="past" aria-selected="false">Past events</button>
+      </div>
+      <div class="filter">
+        <input type="search" id="q" placeholder="Search by name, city or topic..." aria-label="Search events">
+        <select id="country" aria-label="Country"><option value="">All countries</option></select>
+      </div>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="event-grid" id="list"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  let tab = params.get('tab') === 'past' ? 'past' : 'upcoming';
+  const q = document.getElementById('q');
+  const country = document.getElementById('country');
+  const list = document.getElementById('list');
+  const count = document.getElementById('count');
+  const headerSearch = document.querySelector('.search input');
+
+  q.value = params.get('q') || '';
+  if (headerSearch) headerSearch.value = q.value;
+
+  [...new Set(BS.events.map(e => e.country))].sort().forEach(c => country.add(new Option(c, c)));
+
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+  function render() {
+    const term = norm(q.value.trim());
+    let items = tab === 'past' ? BS.past() : BS.upcoming();
+    if (country.value) items = items.filter(e => e.country === country.value);
+    if (term) items = items.filter(e => norm([e.title, e.city, e.country, e.short, ...e.topics].join(' ')).includes(term));
+
+    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.tab === tab));
+    list.innerHTML = items.length
+      ? items.map(BS.eventCard).join('')
+      : `<div class="empty"><strong>No events found.</strong><br>Try another search or check the ${tab === 'past' ? 'upcoming' : 'past'} events.</div>`;
+    count.textContent = `${items.length} ${tab} event${items.length === 1 ? '' : 's'}${term ? ` matching “${q.value.trim()}”` : ''}`;
+
+    const url = new URL(location);
+    url.searchParams.set('tab', tab);
+    term ? url.searchParams.set('q', q.value.trim()) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  }
+
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => { tab = t.dataset.tab; render(); }));
+  q.addEventListener('input', () => { if (headerSearch) headerSearch.value = q.value; render(); });
+  country.addEventListener('change', render);
+
+  // En esta página el buscador del header filtra en vivo, sin recargar
+  if (headerSearch) {
+    headerSearch.form.addEventListener('submit', e => { e.preventDefault(); });
+    headerSearch.addEventListener('input', () => { q.value = headerSearch.value; render(); });
+  }
+
+  // Si la búsqueda no da resultados en próximos pero sí en pasados, cambia sola de pestaña
+  if (q.value && !params.get('tab')) {
+    const term = norm(q.value);
+    const hit = e => norm([e.title, e.city, e.country, e.short, ...e.topics].join(' ')).includes(term);
+    if (!BS.upcoming().some(hit) && BS.past().some(hit)) tab = 'past';
+  }
+  render();
+</script>
+</body>
+</html>
