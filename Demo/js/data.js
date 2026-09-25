@@ -115,3 +115,110 @@ BS.eventCard = e => {
       : `<a class="btn btn-purple" href="event.html?id=${e.id}#register">Participate</a>`}
   </article>`;
 };
+
+// Testimonios enviados por el cliente (Google Sheet del Spain Cybersecurity and Data Trust Forum 2026)
+BS.testimonials = [
+  {
+    "name": "Jesús Valverde Romero",
+    "role": "Profesor Asociado del Máster en Ciberseguridad",
+    "org": "UC3M",
+    "quote": "Cybersecurity is the foundation Digital Trust.",
+    "linkedin": "https://www.linkedin.com/in/jesusvalverderomero/",
+    "initials": "JV"
+  },
+  {
+    "name": "Pilar Dolç",
+    "role": "DPO (Spain)",
+    "org": "Airbus",
+    "quote": "In the era of the AI Act and complex data ecosystems, governance is no longer just a legal requirement — it is a strategic pillar. For the aerospace industry and beyond, building trust through transparent, ethical, and proactive compliance is the only way to ensure that technological innovation is sustainable and resilient",
+    "linkedin": "https://www.linkedin.com/in/pilar-dol%C3%A7-93877569?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    "initials": "PD"
+  },
+  {
+    "name": "Alfonso Martínez",
+    "role": "Country Sales Manager",
+    "org": "Thales Cyber Security Products",
+    "quote": "Do we really have the control over our own digital destiny?",
+    "linkedin": "https://linkedin.com/in/alfonso-martinez-93600a6",
+    "initials": "AM"
+  },
+  {
+    "name": "Vicente Camús",
+    "role": "Cybersecurity Manager",
+    "org": "Globalvia",
+    "quote": "My expectations for this event are to exchange views with CISOs from other organisations, to understand how each organisation is incorporating resilience into its strategic planning, and to identify common challenges where collaboration can strengthen the continuity of the critical infrastructure we manage.",
+    "linkedin": "https://www.linkedin.com/in/vicentecamusmartinez",
+    "initials": "VC"
+  },
+  {
+    "name": "Jaime Pérez Badía",
+    "role": "CDO",
+    "org": "Cajasiete",
+    "quote": "Estos foros son una oportunidad única para compartir visión, impulsar la innovación y acelerar el impacto del dato en nuestras organizaciones. Me permiten conectar con líderes que están transformando el sector y llevar nuevas ideas a nuestra estrategia de datos e IA. Nos ayudan a anticipar tendencias, inspirar a nuestro ecosistema y consolidar una cultura impulsada por el dato. Son espacios que potencian la colaboración y convierten el conocimiento en valor real para clientes y negocio.",
+    "linkedin": "https://www.linkedin.com/in/jaimeperezbadiaimprovedigital/",
+    "initials": "JP"
+  },
+  {
+    "name": "Javier Montoya Tomás",
+    "role": "Responsable de zona de Ciberseguridad, Continuidad y Riesgos",
+    "org": "VEOLIA",
+    "quote": "Compartir, colaborar e innovar son clave para sobrevivir.",
+    "linkedin": "https://linkedin.com/in/javier-montoya-tomás-27bb386",
+    "initials": "JM"
+  },
+  {
+    "name": "Mabel Gonzalez Centenera",
+    "role": "Subdirectora General de Operaciones",
+    "org": "Agencia de Ciberseguridad de la Comunidad de Madrid",
+    "quote": "Para mí, participar en la mesa inaugural del Spain Cybersecurity and Data Trust Forum es importante porque conecta plenamente con aquello en lo que creo: la ciberseguridad es compartir. Este foro nace precisamente para reforzar la confianza digital y la resiliencia en los sectores más críticos, y eso solo es posible si abrimos el conocimiento, si aprendemos unos de otros y si construimos juntos. Cuando compartimos experiencias y aprendizajes, no solo crecemos como profesionales: fortalecemos la confianza, elevamos el nivel de protección y contribuimos a una verdadera soberanía digital",
+    "linkedin": "https://www.linkedin.com/in/mabel-gonzalez",
+    "initials": "MG"
+  }
+];
+
+const inIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.8v1.3c.4-.8 1.4-1.5 2.9-1.5 3 0 3.6 2 3.6 4.6z"/></svg>';
+
+BS.testimonialCard = t => `
+  <article class="t-card">
+    <div>
+      <svg class="t-quote" width="36" height="29" viewBox="0 0 40 32" fill="currentColor" aria-hidden="true"><path d="M0 32V19C0 8.5 5.2 2.2 15.6 0l1.9 4C12 5.6 9.4 9 9 14h8v18zm22 0V19C22 8.5 27.2 2.2 37.6 0l1.9 4C34 5.6 31.4 9 31 14h8v18z"/></svg>
+      <blockquote>${t.quote}</blockquote>
+      ${t.quote.length > 260 ? '<button class="t-more" type="button">Read more</button>' : ''}
+    </div>
+    <div class="t-person">
+      <span class="avatar">${t.initials}</span>
+      <div>
+        <strong>${t.name}</strong>
+        <small>${t.role}</small>
+        <small class="t-org">${t.org}</small>
+      </div>
+      ${t.linkedin ? `<a class="t-in" href="${t.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${inIcon}</a>` : ''}
+    </div>
+  </article>`;
+
+// Carrusel de testimonios con flechas laterales
+BS.initCarousel = root => {
+  const track = root.querySelector('.t-track');
+
+  // "Read more" en los testimonios largos
+  track.addEventListener('click', e => {
+    const btn = e.target.closest('.t-more');
+    if (!btn) return;
+    const card = btn.closest('.t-card');
+    const open = card.classList.toggle('open');
+    btn.textContent = open ? 'Read less' : 'Read more';
+  });
+
+  const prev = root.querySelector('.t-nav.prev');
+  const next = root.querySelector('.t-nav.next');
+  const step = () => (track.firstElementChild ? track.firstElementChild.offsetWidth : 320) + 28;
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  const update = () => {
+    prev.disabled = track.scrollLeft < 8;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+  };
+  track.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+};
