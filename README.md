@@ -18,6 +18,7 @@ Abre `Demo/index.html` en el navegador. No necesita servidor ni instalación.
 | `Demo/event.html?id=<id>` | Ficha de evento: temas, speakers, agenda, sede y solicitud de invitación |
 | `Demo/photos.html` | Galería de fotos |
 | `Demo/login.html`, `Demo/signup.html` | Acceso y registro |
+| `Demo/team.html` | Equipo (submenú de About us) |
 | `Demo/terms.html` | Términos (solo estructura, sin texto legal) |
 
 ## Estructura
@@ -43,7 +44,7 @@ Es de ejemplo: los próximos summits y sus speakers, los testimonios, las cifras
 
 1. Lemas: el header usa "Strengthening security through knowledge and collaboration" y About Us abre con "Building Trust in a Connected World". Confirmar que conviven a propósito.
 2. Testimonios: recibidos (7, del Google Sheet del cliente). Faltan las fotos de 5 de las 7 personas; las otras 2 salen del material publicado por el cliente.
-3. Header nuevo (carpeta de Drive privada), datos del footer, equipo para la página Team y categorías de sponsors.
+3. Header nuevo (carpeta de Drive privada), datos del footer, confirmación del equipo de Security y categorías reales de sponsors.
 4. Inscripción: el flujo de invitación gratuita y compra con Stripe ya existe en Bamberg Health, así que se reutiliza; falta definir la configuración por evento (invitación, compra o ambas).
 5. Idioma: los textos están en inglés. Falta saber si el sitio será bilingüe.
 6. Campos del registro y texto legal de los términos.

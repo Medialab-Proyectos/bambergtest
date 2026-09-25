@@ -22,21 +22,35 @@
   const isPast = new Date(e.date) < BS.today;
   document.title = `${e.title} · Bamberg Security`;
 
-  const cal = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
-  const clock = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
-  const lock = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
-  const pinL = BS.icons.pin.replace(/14/g, '18');
+  const ico = {
+    cal: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+    clock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    lock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+    pin: BS.icons.pin.replace(/14/g, '18'),
+    mail: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
+  };
 
-  const agenda = [
-    ['08:00', 'Registration & welcome coffee', 'Networking with fellow attendees.'],
-    ['09:00', 'Opening keynote', 'The state of cybersecurity and digital trust in the region.'],
-    ['09:45', 'Panel: ' + e.topics[0], 'Senior leaders from government and the private sector.'],
-    ['11:00', 'Networking break', ''],
-    ['11:30', 'Panel: ' + e.topics[1], 'Case studies and lessons learned.'],
-    ['12:45', 'Closed-door roundtable: ' + e.topics[2], 'Invitation-only discussion under Chatham House rule.'],
-    ['14:00', 'Networking lunch', ''],
-    ['15:15', 'Closing remarks', '']
-  ];
+  const speakerRow = sp => `
+    <div class="ag-speaker"><span class="avatar sm">SN</span><div><strong>${sp.name}</strong><small>${sp.org}</small></div></div>`;
+
+  const agendaBlock = b => `
+    <div class="ag-block">
+      <div class="ag-head">
+        <div>
+          <h3 class="heading">${b.title}</h3>
+          <span class="data">${b.from} - ${b.to}</span> (local time)
+        </div>
+        ${b.sessions.length ? `<span class="ag-pill label">${b.sessions.length} session${b.sessions.length > 1 ? 's' : ''}</span>` : ''}
+      </div>
+      ${b.sessions.map(s => `
+        <div class="ag-session">
+          <h4 class="heading">${s.title}</h4>
+          <p class="ag-when"><span class="data">${BS.fmtDate(e.date)}</span> · <span class="data">${s.from} - ${s.to}</span> (local time)</p>
+          <div class="ag-speakers">${s.speakers.map(speakerRow).join('')}</div>
+        </div>`).join('')}
+    </div>`;
+
+  const v = e.venue;
 
   document.getElementById('event').innerHTML = `
   <section class="event-hero on-dark" style="background-image:url('${e.image}')">
@@ -44,16 +58,16 @@
       <span class="label">${isPast ? 'Past event' : 'Cybersecurity & Digital Trust Summit Series'}</span>
       <h1 class="display">${e.title}</h1>
       <div class="event-facts">
-        <div>${cal}<span class="data">${BS.fmtDate(e.date)}</span></div>
-        <div>${clock}<span class="data">${e.time}</span>&nbsp;(local time)</div>
-        <div>${pinL}${e.city}, ${e.country}</div>
-        <div>${lock}${e.access} · ${e.format}</div>
+        <div>${ico.cal}<span class="data">${BS.fmtDate(e.date)}</span></div>
+        <div>${ico.clock}<span class="data">${e.time}</span>&nbsp;(local time)</div>
+        <div>${ico.pin}${e.city}, ${e.country}</div>
+        <div>${ico.lock}${e.access} · ${e.format}</div>
       </div>
       <div class="row">
         ${isPast
           ? `<a class="btn btn-coral" href="photos.html">View photos</a>`
-          : `<a class="btn btn-coral" href="#register">Request an invitation</a>`}
-        <a class="btn btn-ghost" href="#speakers">Speakers</a>
+          : `<a class="btn btn-coral" href="#register">Register</a>`}
+        <a class="btn btn-ghost" href="#agenda">Explore agenda</a>
       </div>
     </div>
   </section>
@@ -63,8 +77,10 @@
       <a href="#overview">Overview</a>
       <a href="#speakers">Speakers</a>
       <a href="#agenda">Agenda</a>
+      <a href="#partners">Partners</a>
       <a href="#venue">Venue</a>
-      <a href="#register">${isPast ? 'Next events' : 'Request an invitation'}</a>
+      <a href="#voices">Testimonials</a>
+      <a href="#register">${isPast ? 'Next events' : 'Register'}</a>
     </div>
   </nav>
 
@@ -106,18 +122,64 @@
     <div class="wrap">
       <span class="label">Agenda</span>
       <h2 class="heading">Programme</h2>
-      <div class="agenda">
-        ${agenda.map(([t, h, p]) => `<div class="agenda-row"><time class="data">${t}</time><div><h4>${h}</h4>${p ? `<p>${p}</p>` : ''}</div></div>`).join('')}
+      <p class="ag-note">Sessions are published as speakers are confirmed.</p>
+      <div class="agenda-blocks">${BS.agenda.map(agendaBlock).join('')}</div>
+    </div>
+  </section>
+
+  <section class="ev-section alt" id="partners">
+    <div class="wrap">
+      <div class="center-head">
+        <span class="label">Our partners</span>
+        <h2 class="heading">Join us in creating private spaces for strategic dialogue and real-world insights</h2>
+      </div>
+      ${BS.sponsorsByCategory().map(g => `
+        <div class="sponsor-tier">
+          <p class="tier-name label">${g.cat}</p>
+          <div class="sponsor-row">
+            ${g.items.map(s => `<div class="sponsor"><img src="${s.logo}" alt="${s.name}" loading="lazy"${s.dim ? ` style="--b:${s.dim}"` : ''}></div>`).join('')}
+          </div>
+        </div>`).join('')}
+      <div class="row" style="justify-content:center; display:flex; margin-top:36px">
+        <a class="btn btn-purple" href="#" data-open-inquiry>Become a partner</a>
       </div>
     </div>
   </section>
 
-  <section class="ev-section alt" id="venue">
-    <div class="wrap overview">
-      <div>
-        <span class="label">Venue</span>
-        <h2 class="heading">${e.city}, ${e.country}</h2>
-        <p>${e.venue}. The exact location is shared with confirmed attendees.</p>
+  <section class="ev-section" id="venue">
+    <div class="wrap">
+      <span class="label">Venue</span>
+      <h2 class="heading">${v.name}</h2>
+      <div class="venue-card">
+        <div class="venue-media">
+          ${v.photo
+            ? `<img src="${v.photo}" alt="${v.name}">`
+            : `<div class="venue-empty">${ico.pin}<span>Photo to be confirmed</span></div>`}
+        </div>
+        <div class="venue-info">
+          <div class="venue-line">${ico.pin}<div><strong>Address</strong><p>${v.address}</p></div></div>
+          <div class="venue-line">${ico.mail}<div><strong>Contact</strong><p><a href="mailto:${v.email}">${v.email}</a></p></div></div>
+          ${v.map ? `<a class="btn btn-outline" href="${v.map}" target="_blank" rel="noopener">Open in maps</a>` : ''}
+          <p class="venue-note">The exact room and access details are shared with confirmed attendees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials alt" id="voices">
+    <div class="wrap">
+      <div class="center-head">
+        <span class="label">Voices</span>
+        <h2 class="heading">What participants say</h2>
+      </div>
+      <div class="t-carousel">
+        <button class="t-nav prev" type="button" aria-label="Previous testimonials">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <div class="t-track" id="ev-testimonials"></div>
+        <button class="t-nav next" type="button" aria-label="Next testimonials">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -129,44 +191,122 @@
     <div class="row"><a class="btn btn-purple" href="summits.html">Upcoming events</a><a class="btn btn-outline" href="photos.html">View photos</a></div>
   </section>` : `
   <section class="register on-dark" id="register">
-    <div class="wrap register-grid">
-      <div>
-        <span class="label">Private event</span>
-        <h2 class="heading">Request an invitation</h2>
-        <p>Attendance is by invitation only. Our team reviews every request to keep the conversation among senior decision-makers.</p>
-        <ul>
-          <li>CISOs, CIOs and senior security leaders</li>
-          <li>Government, regulators and public institutions</li>
-          <li>Critical infrastructure operators</li>
-        </ul>
+    <div class="wrap">
+      <div class="center-head on-dark">
+        <span class="label">Registration</span>
+        <h2 class="heading">Get your place</h2>
       </div>
-      <div class="panel">
-        <h3 class="heading">Your details</h3>
-        <form class="form">
-          <label>First name<input required autocomplete="given-name"></label>
-          <label>Last name<input required autocomplete="family-name"></label>
-          <label class="full">Work email<input type="email" required autocomplete="email"></label>
-          <label>Organization<input required autocomplete="organization"></label>
-          <label>Job title<input required autocomplete="organization-title"></label>
-          <label class="full">I want to
-            <select><option>Attend</option><option>Speak</option><option>Partner / sponsor</option></select>
-          </label>
-          <label class="full check"><input type="checkbox" required> I accept the <a href="terms.html">terms</a> and privacy policy.</label>
-          <button class="btn btn-purple" type="submit">Send request</button>
-        </form>
-        <div class="form-ok" hidden>
-          <h3 class="heading">Request received</h3>
-          <p>We will review your request and get back to you by email.</p>
+
+      <div class="reg-panel">
+        <!-- Paso 1: el correo es la llave. Si el usuario existe, se loguea; si no, lo crea -->
+        <div class="reg-step" id="step-email">
+          <h3 class="heading">Start with your work email</h3>
+          <p>We use your email to check whether you already have a Bamberg account.</p>
+          <form class="reg-mail">
+            <input type="email" required placeholder="name@company.com" aria-label="Work email">
+            <button class="btn btn-purple" type="submit">Continue</button>
+          </form>
+          <p class="reg-hint" hidden></p>
+        </div>
+
+        <!-- Paso 2: invitación gratuita y/o compra de entrada -->
+        <div class="reg-step" id="step-options" hidden>
+          <div class="invite-box">
+            <div>
+              <h3 class="heading">Request your free invitation</h3>
+              <p><strong>ONLY FOR:</strong> senior decision-makers from public institutions, regulatory bodies and critical sectors, including CISOs, CIOs, CTOs and leaders in data governance and compliance across finance, insurance, energy, infrastructure, telecommunications, logistics, healthcare, manufacturing and utilities.</p>
+            </div>
+            <button class="btn btn-coral" type="button" id="btn-invite">Request invitation</button>
+          </div>
+
+          <div class="tickets">
+            ${BS.tickets.map((t, i) => `
+              <div class="ticket">
+                <div>
+                  <strong>${t.name}</strong> <span class="ticket-tag label">${t.mode}</span>
+                  <p class="ticket-exp">This ticket expires on: <span class="data">${t.expires}</span></p>
+                </div>
+                <div class="ticket-buy">
+                  <span class="ticket-price">Price: <b class="data">${t.price} ${t.currency}</b></span>
+                  <div class="qty" data-price="${t.price}">
+                    <button type="button" aria-label="Less">−</button>
+                    <span class="data" id="q${i}">0</span>
+                    <button type="button" aria-label="More">+</button>
+                  </div>
+                </div>
+              </div>`).join('')}
+            <p class="ticket-note">Registration is transferable to colleagues or to future events, though it is not refundable.</p>
+            <div class="checkout">
+              <span>Total: <b class="data" id="total">0 USD</b></span>
+              <button class="btn btn-purple" type="button" id="btn-pay" disabled>Checkout with Stripe</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="reg-step" id="step-done" hidden>
+          <h3 class="heading" id="done-title">Request received</h3>
+          <p id="done-text">Our team reviews every request to keep the conversation among senior decision-makers. We will reply by email.</p>
+          <a class="btn btn-outline" href="summits.html">Back to summits</a>
         </div>
       </div>
     </div>
-    <div class="wrap"></div>
   </section>`}`;
 
-  // Los formularios se crean después de layout.js: conectarlos aquí
-  document.querySelectorAll('#event form.form').forEach(f => f.addEventListener('submit', ev => {
-    ev.preventDefault(); f.hidden = true; f.parentElement.querySelector('.form-ok').hidden = false;
-  }));
+  // Testimonios del evento
+  const evT = document.getElementById('ev-testimonials');
+  if (evT) {
+    evT.innerHTML = BS.testimonials.map(BS.testimonialCard).join('');
+    BS.initCarousel(document.querySelector('#voices .t-carousel'));
+  }
+
+  // Registro: el correo decide si hay que crear cuenta o iniciar sesión
+  const stepEmail = document.getElementById('step-email');
+  if (stepEmail) {
+    const hint = stepEmail.querySelector('.reg-hint');
+    const options = document.getElementById('step-options');
+    const done = document.getElementById('step-done');
+
+    stepEmail.querySelector('form').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const mail = stepEmail.querySelector('input').value.trim();
+      const existe = /@bambergsummits\\.com$/i.test(mail); // en Bubble: búsqueda real del usuario
+      hint.hidden = false;
+      hint.textContent = existe
+        ? `Account found for ${mail} — log in to continue.`
+        : `No account for ${mail} yet — we will create one for you.`;
+      options.hidden = false;
+      options.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    document.getElementById('btn-invite').addEventListener('click', () => {
+      options.hidden = true;
+      done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Contador de entradas
+    const qty = document.querySelector('.qty');
+    const total = document.getElementById('total');
+    const pay = document.getElementById('btn-pay');
+    let n = 0;
+    qty.addEventListener('click', ev => {
+      const b = ev.target.closest('button');
+      if (!b) return;
+      n = Math.max(0, n + (b.textContent === '+' ? 1 : -1));
+      qty.querySelector('span').textContent = n;
+      total.textContent = `${n * Number(qty.dataset.price)} USD`;
+      pay.disabled = n === 0;
+    });
+    pay.addEventListener('click', () => {
+      options.hidden = true;
+      document.getElementById('done-title').textContent = 'Redirecting to Stripe';
+      document.getElementById('done-text').textContent = '(Demo) In the real site this opens the Stripe checkout for your tickets.';
+      done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
   if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
 </script>
 </body>

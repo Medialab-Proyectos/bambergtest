@@ -14,7 +14,13 @@ BS.events = [
     short: 'Focused on national cyber resilience, critical infrastructure protection, data trust, NIS2 and DORA compliance.',
     topics: ['National cyber resilience', 'Critical infrastructure protection', 'NIS2 & DORA compliance', 'Data trust & privacy', 'AI and emerging threats', 'Public-private collaboration'],
     speakers: 24,
-    venue: 'Venue to be confirmed, Madrid'
+    venue: {
+      name: 'Hotel Meliá Madrid Princesa',
+      address: 'C. de la Princesa 27, Moncloa-Aravaca, 28008 Madrid, Spain',
+      email: 'events@bambergsummits.com',
+      photo: 'assets/img/venue.jpg',
+      map: 'https://maps.google.com/?q=Hotel+Meli%C3%A1+Madrid+Princesa'
+    }
   },
   {
     id: 'mexico-2027',
@@ -27,7 +33,7 @@ BS.events = [
     short: 'Bringing together CISOs, regulators and critical infrastructure operators to discuss cyber policy, AI risk and digital identity.',
     topics: ['Cyber policy & regulation', 'AI risk', 'Digital identity', 'Financial sector security', 'Cloud security', 'Talent & skills'],
     speakers: 18,
-    venue: 'Venue to be confirmed, Mexico City'
+    venue: { name: 'Venue to be confirmed', address: 'Mexico City, Mexico', email: 'events@bambergsummits.com' }
   },
   {
     id: 'argentina-2027',
@@ -40,7 +46,7 @@ BS.events = [
     short: 'Public-private collaboration on digital risk, data protection, financial sector security and emerging threats.',
     topics: ['Digital risk', 'Data protection', 'Financial sector security', 'Emerging threats', 'Government collaboration', 'Incident response'],
     speakers: 20,
-    venue: 'Venue to be confirmed, Buenos Aires'
+    venue: { name: 'Venue to be confirmed', address: 'Buenos Aires, Argentina', email: 'events@bambergsummits.com' }
   },
   {
     id: 'portugal-2027',
@@ -53,7 +59,7 @@ BS.events = [
     short: 'A closed-door forum on cyber resilience for public administration, healthcare and energy operators.',
     topics: ['Public administration', 'Healthcare cybersecurity', 'Energy & utilities', 'Supply chain risk', 'Cyber insurance', 'Board-level governance'],
     speakers: 16,
-    venue: 'Venue to be confirmed, Lisbon'
+    venue: { name: 'Venue to be confirmed', address: 'Lisbon, Portugal', email: 'events@bambergsummits.com' }
   },
   {
     id: 'spain-forum-2026',
@@ -66,7 +72,7 @@ BS.events = [
     short: 'Building digital trust: an institutional and business vision for the digital economy.',
     topics: ['Digital trust', 'Data governance', 'Compliance (NIS2, DORA, ENS)', 'Identity & access', 'Public-private collaboration'],
     speakers: 20,
-    venue: 'Madrid, Spain'
+    venue: { name: 'Hotel Meliá Madrid Princesa', address: 'C. de la Princesa 27, 28008 Madrid, Spain', email: 'events@bambergsummits.com', photo: 'assets/img/venue.jpg' }
   }
 ];
 
@@ -228,3 +234,85 @@ BS.initCarousel = root => {
   addEventListener('resize', update);
   update();
 };
+
+// Equipo. Datos tomados de la página de equipo de Bamberg Health: hay que confirmar
+// quiénes forman el equipo de Bamberg Security.
+BS.team = [
+  { name: "Daniel Para Mata", role: "Founder", photo: "assets/team/daniel.jpg", email: "daniel@bambergsummits.com" },
+  { name: "Lourdes Rodríguez", role: "Managing Director", photo: "assets/team/lourdes.jpg", email: "lourdes@bambergsummits.com" },
+  { name: "Alexia Bercasa", role: "Head of Sponsorship Relations", photo: "assets/team/alexia.jpg", email: "alexia@bambergsummits.com" },
+  { name: "Gabriela Flores Fortmann", role: "Program Manager & Head of Institutional Relations", photo: "assets/team/gabriela.jpg", email: "gaby@bambergsummits.com" },
+  { name: "Álvaro López", role: "Program Manager", photo: "assets/team/alvaro.jpg", email: "alvaro@bambergsummits.com" },
+  { name: "Andrea Amador", role: "Program Manager", photo: "assets/team/andrea.jpg", email: "andrea@bambergsummits.com" },
+  { name: "Gonzalo Galizia", role: "Program Manager", photo: "assets/team/gonzalo.jpg", email: "gonzalo@bambergsummits.com" },
+  { name: "Daniela Christensson", role: "Events & Logistics Manager", photo: "assets/team/daniela.jpg", email: "daniela@bambergsummits.com" },
+];
+
+// Sponsors. Las categorías son de ejemplo: falta la lista real del admin.
+// Se ordenan por categoría y, dentro de cada una, alfabéticamente.
+BS.sponsorCategories = ['Diamond', 'Gold', 'Silver', 'Institutional partner'];
+BS.sponsors = [
+  { name: 'Thales Cyber Security', logo: 'assets/partners/thales.png', category: 'Diamond' },
+  { name: 'Acer for Business', logo: 'assets/partners/acer.png', category: 'Gold', dim: .6 },
+  { name: 'Chrome Enterprise', logo: 'assets/partners/chrome.png', category: 'Gold' },
+  { name: 'BigID', logo: 'assets/partners/bigid.png', category: 'Silver' },
+  { name: 'Formalize', logo: 'assets/partners/formalize.png', category: 'Silver' },
+  { name: 'Infoblox', logo: 'assets/partners/infoblox.png', category: 'Silver' }
+];
+BS.sponsorsByCategory = () => BS.sponsorCategories
+  .map(cat => ({ cat, items: BS.sponsors.filter(s => s.category === cat).sort((a, b) => a.name.localeCompare(b.name)) }))
+  .filter(g => g.items.length);
+
+// Agenda con el formato del panel de producción: bloque > sesiones > ponentes
+BS.agenda = [
+  {
+    title: 'Institutional Opening', from: '9:00 am', to: '9:30 am',
+    sessions: [{
+      title: 'Building Digital Trust: Institutional Vision and Challenges for the Digital Economy',
+      from: '9:00 am', to: '9:30 am',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }, { name: 'Speaker name', org: 'Organization' }]
+    }]
+  },
+  {
+    title: 'Governance, Trust and Resilience in Critical Sectors', from: '9:30 am', to: '10:30 am',
+    sessions: [{
+      title: 'Resilience and Continuity in Critical Infrastructure',
+      from: '9:30 am', to: '10:15 am',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }, { name: 'Speaker name', org: 'Organization' },
+                 { name: 'Speaker name', org: 'Organization' }, { name: 'Speaker name', org: 'Organization' }]
+    }, {
+      title: 'Data Governance and the AI Act',
+      from: '10:15 am', to: '10:30 am',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }]
+    }]
+  },
+  {
+    title: 'Networking Break', from: '10:30 am', to: '11:00 am', sessions: []
+  },
+  {
+    title: 'Identity, Data and AI Security', from: '11:00 am', to: '12:30 pm',
+    sessions: [{
+      title: 'Identity as the New Perimeter',
+      from: '11:00 am', to: '11:45 am',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }, { name: 'Speaker name', org: 'Organization' }]
+    }, {
+      title: 'Securing AI Adoption in Regulated Industries',
+      from: '11:45 am', to: '12:30 pm',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }, { name: 'Speaker name', org: 'Organization' }]
+    }]
+  },
+  { title: 'Networking Lunch', from: '12:30 pm', to: '2:00 pm', sessions: [] },
+  {
+    title: 'Closed-Door Executive Roundtable', from: '2:00 pm', to: '3:15 pm',
+    sessions: [{
+      title: 'Operational Resilience: Lessons Learned',
+      from: '2:00 pm', to: '3:15 pm',
+      speakers: [{ name: 'Speaker name', org: 'Organization' }]
+    }]
+  }
+];
+
+// Entradas del evento: invitación gratuita, compra o ambas (se configura por evento)
+BS.tickets = [
+  { name: 'In-person access', mode: 'In-person', price: 100, currency: 'USD', expires: 'Fri, Nov 6, 2026' }
+];

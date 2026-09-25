@@ -17,7 +17,15 @@
       </button>
       <nav class="nav-links">
         ${link('summits.html', 'Summits', 'summits')}
-        ${link('about.html', 'About us', 'about')}
+        <div class="nav-item has-sub">
+          <a href="about.html"${page === 'about' || page === 'team' ? ' class="active"' : ''}>About us
+            <svg class="caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="submenu">
+            <a href="about.html">About us</a>
+            <a href="team.html">Team</a>
+          </div>
+        </div>
         ${link('photos.html', 'Photos', 'photos')}
         <div class="nav-actions">
           <a class="btn btn-purple" href="signup.html">Sign up</a>
