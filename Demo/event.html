@@ -133,14 +133,16 @@
         <span class="label">Our partners</span>
         <h2 class="heading">Join us in creating private spaces for strategic dialogue and real-world insights</h2>
       </div>
-      ${BS.sponsorsByCategory().map(g => `
-        <div class="sponsor-tier">
-          <p class="tier-name label">${g.cat}</p>
-          <div class="sponsor-row">
-            ${g.items.map(s => `<div class="sponsor"><img src="${s.logo}" alt="${s.name}" loading="lazy"${s.dim ? ` style="--b:${s.dim}"` : ''}></div>`).join('')}
-          </div>
-        </div>`).join('')}
-      <div class="row" style="justify-content:center; display:flex; margin-top:36px">
+      <div class="sponsor-wall">
+        ${BS.sponsorsByCategory().map(g => `
+          <div class="tier tier-${g.cat.toLowerCase().split(' ')[0]}">
+            <p class="tier-name label">${g.cat}</p>
+            <div class="tier-logos">
+              ${g.items.map(s => `<img src="${s.logo}" alt="${s.name}" loading="lazy"${s.dim ? ` style="--b:${s.dim}"` : ''}>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>
+      <div class="row" style="justify-content:center; display:flex; margin-top:28px">
         <a class="btn btn-purple" href="#" data-open-inquiry>Become a partner</a>
       </div>
     </div>
