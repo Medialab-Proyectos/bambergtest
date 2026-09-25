@@ -222,6 +222,8 @@ main { display: block; }
 .t-person strong { display: block; line-height: 1.3; }
 .t-person small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.35; }
 .t-person .t-org { color: var(--purple); font-weight: 600; }
+.t-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex: none; }
+.avatar.ph { background: rgba(72,22,143,.1); color: rgba(72,22,143,.45); }
 .t-in { color: var(--purple); flex: none; opacity: .7; }
 .t-in:hover { opacity: 1; }
 

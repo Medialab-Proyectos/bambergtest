@@ -120,7 +120,7 @@ BS.eventCard = e => {
 BS.testimonials = [
   {
     "name": "Jesús Valverde Romero",
-    "role": "Profesor Asociado del Máster en Ciberseguridad",
+    "role": "Associate Professor, Master's Degree in Cybersecurity",
     "org": "UC3M",
     "quote": "Cybersecurity is the foundation Digital Trust.",
     "linkedin": "https://www.linkedin.com/in/jesusvalverderomero/",
@@ -144,6 +144,7 @@ BS.testimonials = [
   },
   {
     "name": "Vicente Camús",
+    "photo": "assets/people/vicente.jpg",
     "role": "Cybersecurity Manager",
     "org": "Globalvia",
     "quote": "My expectations for this event are to exchange views with CISOs from other organisations, to understand how each organisation is incorporating resilience into its strategic planning, and to identify common challenges where collaboration can strengthen the continuity of the critical infrastructure we manage.",
@@ -154,13 +155,15 @@ BS.testimonials = [
     "name": "Jaime Pérez Badía",
     "role": "CDO",
     "org": "Cajasiete",
-    "quote": "Estos foros son una oportunidad única para compartir visión, impulsar la innovación y acelerar el impacto del dato en nuestras organizaciones. Me permiten conectar con líderes que están transformando el sector y llevar nuevas ideas a nuestra estrategia de datos e IA. Nos ayudan a anticipar tendencias, inspirar a nuestro ecosistema y consolidar una cultura impulsada por el dato. Son espacios que potencian la colaboración y convierten el conocimiento en valor real para clientes y negocio.",
+    "quote": "These forums are a unique opportunity to share vision, drive innovation and accelerate the impact of data across our organizations. They let me connect with leaders who are transforming the sector and bring new ideas into our data and AI strategy. They help us anticipate trends, inspire our ecosystem and consolidate a data-driven culture. They are spaces that strengthen collaboration and turn knowledge into real value for customers and the business.",
+    "quoteEs": "Estos foros son una oportunidad única para compartir visión, impulsar la innovación y acelerar el impacto del dato en nuestras organizaciones. Me permiten conectar con líderes que están transformando el sector y llevar nuevas ideas a nuestra estrategia de datos e IA. Nos ayudan a anticipar tendencias, inspirar a nuestro ecosistema y consolidar una cultura impulsada por el dato. Son espacios que potencian la colaboración y convierten el conocimiento en valor real para clientes y negocio.",
     "linkedin": "https://www.linkedin.com/in/jaimeperezbadiaimprovedigital/",
     "initials": "JP"
   },
   {
     "name": "Javier Montoya Tomás",
-    "role": "Responsable de zona de Ciberseguridad, Continuidad y Riesgos",
+    "photo": "assets/people/javier.jpg",
+    "role": "Regional Head of Cybersecurity, Continuity and Risk",
     "org": "VEOLIA",
     "quote": "Compartir, colaborar e innovar son clave para sobrevivir.",
     "linkedin": "https://linkedin.com/in/javier-montoya-tomás-27bb386",
@@ -168,9 +171,10 @@ BS.testimonials = [
   },
   {
     "name": "Mabel Gonzalez Centenera",
-    "role": "Subdirectora General de Operaciones",
+    "role": "Deputy Director General of Operations",
     "org": "Agencia de Ciberseguridad de la Comunidad de Madrid",
-    "quote": "Para mí, participar en la mesa inaugural del Spain Cybersecurity and Data Trust Forum es importante porque conecta plenamente con aquello en lo que creo: la ciberseguridad es compartir. Este foro nace precisamente para reforzar la confianza digital y la resiliencia en los sectores más críticos, y eso solo es posible si abrimos el conocimiento, si aprendemos unos de otros y si construimos juntos. Cuando compartimos experiencias y aprendizajes, no solo crecemos como profesionales: fortalecemos la confianza, elevamos el nivel de protección y contribuimos a una verdadera soberanía digital",
+    "quote": "Taking part in the opening panel of the Spain Cybersecurity and Data Trust Forum matters to me because it connects completely with what I believe: cybersecurity is about sharing. This forum exists precisely to strengthen digital trust and resilience in the most critical sectors, and that is only possible if we open up knowledge, learn from one another and build together. When we share experiences and lessons learned, we do not only grow as professionals: we strengthen trust, we raise the level of protection and we contribute to genuine digital sovereignty.",
+    "quoteEs": "Para mí, participar en la mesa inaugural del Spain Cybersecurity and Data Trust Forum es importante porque conecta plenamente con aquello en lo que creo: la ciberseguridad es compartir. Este foro nace precisamente para reforzar la confianza digital y la resiliencia en los sectores más críticos, y eso solo es posible si abrimos el conocimiento, si aprendemos unos de otros y si construimos juntos. Cuando compartimos experiencias y aprendizajes, no solo crecemos como profesionales: fortalecemos la confianza, elevamos el nivel de protección y contribuimos a una verdadera soberanía digital",
     "linkedin": "https://www.linkedin.com/in/mabel-gonzalez",
     "initials": "MG"
   }
@@ -186,7 +190,9 @@ BS.testimonialCard = t => `
       ${t.quote.length > 260 ? '<button class="t-more" type="button">Read more</button>' : ''}
     </div>
     <div class="t-person">
-      <span class="avatar">${t.initials}</span>
+      ${t.photo
+        ? `<img class="t-photo" src="${t.photo}" alt="${t.name}">`
+        : `<span class="avatar ph" title="Falta la foto"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8.2" r="4.2"/><path d="M3.8 21c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2z"/></svg></span>`}
       <div>
         <strong>${t.name}</strong>
         <small>${t.role}</small>

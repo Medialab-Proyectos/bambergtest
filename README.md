@@ -41,10 +41,10 @@ Es de ejemplo: los próximos summits y sus speakers, los testimonios, las cifras
 
 ## Pendiente de confirmar con el cliente
 
-1. Título del hero. Usamos "Building trust in a connected world", de la reunión. El manual propone "Strengthening security through knowledge and collaboration".
-2. Testimonios: ¿los manda el cliente o se sacan de sus redes sociales?
-3. Texto de About Us y cifras reales.
-4. Inscripción: como los eventos son privados, proponemos solicitar invitación en lugar de la compra directa de Health.
+1. Lemas: el header usa "Strengthening security through knowledge and collaboration" y About Us abre con "Building Trust in a Connected World". Confirmar que conviven a propósito.
+2. Testimonios: recibidos (7, del Google Sheet del cliente). Faltan las fotos de 5 de las 7 personas; las otras 2 salen del material publicado por el cliente.
+3. Header nuevo (carpeta de Drive privada), datos del footer, equipo para la página Team y categorías de sponsors.
+4. Inscripción: el flujo de invitación gratuita y compra con Stripe ya existe en Bamberg Health, así que se reutiliza; falta definir la configuración por evento (invitación, compra o ambas).
 5. Idioma: los textos están en inglés. Falta saber si el sitio será bilingüe.
 6. Campos del registro y texto legal de los términos.
 
